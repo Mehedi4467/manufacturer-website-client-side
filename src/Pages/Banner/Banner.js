@@ -8,7 +8,7 @@ const Banner = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">All car accessories</h1>
                     <p className="mb-5">Are you looking for all car accessories? Then you will get all the car accessories from us which are made in our own factory. At affordable prices.</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <button className="btn bg-[#FB4010]">Get Started</button>
                 </div>
             </div>
         </div >

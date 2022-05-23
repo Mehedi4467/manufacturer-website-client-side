@@ -7,6 +7,8 @@ import NotFound from "./Pages/NotFound/NotFound";
 import Registration from "./Pages/Registration/Registration";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Purchase from "./Pages/Purchase/Purchase";
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
 function App() {
   return (
     <div>
@@ -15,6 +17,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/registration" element={<Registration></Registration>}></Route>
+        <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

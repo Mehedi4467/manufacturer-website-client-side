@@ -1,15 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Tool = () => {
+const Tool = ({ product }) => {
+
+    const { name, image, _id, description } = product;
+    const navigate = useNavigate();
+    const handelPurchase = (id) => {
+        navigate(`/purchase/${id}`);
+    }
     return (
-        <div>
+        <div className='flex justify-center'>
             <div class="card w-96 bg-base-100 shadow-xl">
-                <figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+                <figure><img src={image} alt="Shoes" /></figure>
                 <div class="card-body">
-                    <h2 class="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <h2 class="card-title">{name}</h2>
+                    <p>{description}</p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
+                        <button onClick={() => handelPurchase(_id)} class="btn bg-[#FB4010]">Book Now</button>
                     </div>
                 </div>
             </div>

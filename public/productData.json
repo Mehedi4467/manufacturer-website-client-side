@@ -1,0 +1,110 @@
+[
+    {
+        "_id": "628bc2093aa9d307b8fa5b87",
+        "name": "Sonia Moon",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$1814.68"
+    },
+    {
+        "_id": "628bc209657b86417529c024",
+        "name": "Penelope Hawkins",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$2323.95"
+    },
+    {
+        "_id": "628bc209d68ecbaf55943c22",
+        "name": "Rosalie Snow",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$2044.56"
+    },
+    {
+        "_id": "628bc2095921b7541b311c4a",
+        "name": "Hutchinson Fischer",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$1681.46"
+    },
+    {
+        "_id": "628bc20966b5713573287e68",
+        "name": "Carver Patton",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$3410.82"
+    },
+    {
+        "_id": "628bc2091b8040c95fda636a",
+        "name": "Charlene Dale",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$2554.33"
+    },
+    {
+        "_id": "628bc209be1e04eddc99c981",
+        "name": "Conley Benjamin",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$3389.55"
+    },
+    {
+        "_id": "628bc209bc468ac2aad150e5",
+        "name": "Mcintosh Richardson",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$2763.31"
+    },
+    {
+        "_id": "628bc209fdd21eb55ef68e27",
+        "name": "Hess Michael",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$2063.54"
+    },
+    {
+        "_id": "628bc2099c21c3f67e47b71c",
+        "name": "Cantu Jacobson",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$3337.40"
+    },
+    {
+        "_id": "628bc2099ba88f63844e1510",
+        "name": "Morton Melendez",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$3288.70"
+    },
+    {
+        "_id": "628bc209c313c185a468da4b",
+        "name": "Cox Shelton",
+        "image": "https://www.fitinpart.sg/catalog/view/theme/fitinparts/v2/images/car-parts.jpg",
+        "description": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is availab",
+        "minQuantity": 100,
+        "quantity": 500,
+        "price": "$1278.42"
+    }
+]
