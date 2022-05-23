@@ -5,7 +5,7 @@ import CustomLink from '../../CustomLink/CustomLink';
 
 const Menu = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="container mx-auto navbar bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabindex="0" className="btn btn-ghost lg:hidden">
