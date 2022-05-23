@@ -4,14 +4,18 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import logo from '../../Images/logo/logo.png';
 import Spinner from '../Spinner/Spinner';
 import { useForm } from 'react-hook-form';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 const Registration = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [createUserWithEmailAndPassword, user, loading, error] =
         useCreateUserWithEmailAndPassword(auth);
     const [updateProfile] = useUpdateProfile(auth);
     const [Check, setCheck] = useState(true);
+    const [sendEmailVerification, sending] = useSendEmailVerification(
+        auth
+    );
     const {
         register,
         formState: { errors },
@@ -26,6 +30,8 @@ const Registration = () => {
         const password = data.password;
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName });
+        await sendEmailVerification();
+        toast("Registration Complated and send email for Verification");
     };
 
     useEffect(() => {
@@ -33,7 +39,7 @@ const Registration = () => {
             navigate(from, { replace: true });
         }
     }, [navigate, gUser, from, user]);
-    if (gLoading || loading) {
+    if (gLoading || loading || sending) {
         return <Spinner></Spinner>;
     }
     return (

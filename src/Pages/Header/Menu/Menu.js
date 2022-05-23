@@ -2,8 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Images/logo/logo.png';
 import CustomLink from '../../CustomLink/CustomLink';
+import { signOut } from 'firebase/auth';
+import auth from '../../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Menu = () => {
+    const [user] = useAuthState(auth);
+
     return (
         <div className="container mx-auto navbar bg-base-100">
             <div className="navbar-start">
@@ -41,7 +46,11 @@ const Menu = () => {
                             <li><a>Submenu 2</a></li>
                         </ul>
                     </li>
-                    <li><CustomLink to='/login'>Login</CustomLink></li>
+                    {
+                        user ? <li onClick={() => signOut(auth)} ><button>Log out</button></li> : <li><CustomLink to='/login'>Login</CustomLink></li>
+                    }
+
+
                 </ul>
             </div>
             <div className="navbar-end mr-4">
