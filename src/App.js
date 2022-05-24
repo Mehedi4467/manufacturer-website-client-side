@@ -15,6 +15,7 @@ import Review from "./Pages/Dashboard/Review";
 import CustomerOrder from "./Pages/Dashboard/CustomerOrder";
 import Blogs from "./Pages/Blogs/Blogs";
 import Portfolio from "./Pages/Portfolio/Portfolio";
+import UpdateProfile from "./Pages/UpdateProfile/UpdateProfile";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route index element={<Profile></Profile>} />
           <Route path="review" element={<RequireAuth><Review></Review></RequireAuth>} />
           <Route path="orders" element={<RequireAuth><CustomerOrder></CustomerOrder></RequireAuth>} />
+          <Route path="update" element={<RequireAuth><UpdateProfile></UpdateProfile></RequireAuth>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
