@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
+import Spinner from '../Spinner/Spinner';
 import Tool from './Tool';
 
 const Tools = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch('productData.json')
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-            })
-    }, []);
 
 
+    const { isLoading, data } = useQuery('productData', () =>
+        fetch('http://localhost:5000/product').then(res =>
+            res.json()
+        )
+    )
+
+    if (isLoading) {
+        return <Spinner></Spinner>
+    }
     return (
         <div className='container mx-auto my-10'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {
-                    products.map(product => <Tool key={product._id} product={product}></Tool>)
+                    data.slice(0, 6).map(product => <Tool key={product._id} product={product}></Tool>)
                 }
             </div>
         </div>
