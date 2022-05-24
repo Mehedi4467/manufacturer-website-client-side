@@ -20,6 +20,7 @@ import AddProduct from './Pages/Admin/AddProduct';
 import MakeAdmin from "./Pages/Admin/MakeAdmin";
 import ManageOrder from './Pages/Admin/ManageOrder';
 import ManagePrduct from './Pages/Admin/ManageProduct';
+import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
 
 
 function App() {
@@ -40,10 +41,10 @@ function App() {
           <Route path="update" element={<RequireAuth><UpdateProfile></UpdateProfile></RequireAuth>} />
 
 
-          <Route path="addproduct" element={<RequireAuth><AddProduct></AddProduct> </RequireAuth>} />
-          <Route path="makeAdmin" element={<RequireAuth><MakeAdmin></MakeAdmin></RequireAuth>} />
-          <Route path="manageOrder" element={<RequireAuth><ManageOrder></ManageOrder></RequireAuth>} />
-          <Route path="manageProduct" element={<RequireAuth><ManagePrduct></ManagePrduct></RequireAuth>} />
+          <Route path="addproduct" element={<RequireAuth><RequireAdmin><AddProduct></AddProduct> </RequireAdmin></RequireAuth>} />
+          <Route path="makeAdmin" element={<RequireAuth><RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin></RequireAuth>} />
+          <Route path="manageOrder" element={<RequireAuth><RequireAdmin><ManageOrder></ManageOrder></RequireAdmin></RequireAuth>} />
+          <Route path="manageProduct" element={<RequireAuth><RequireAdmin><ManagePrduct></ManagePrduct></RequireAdmin></RequireAuth>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
