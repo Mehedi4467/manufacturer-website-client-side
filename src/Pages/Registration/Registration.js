@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
+import useToken from '../../Hooks/useToken';
 const Registration = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [createUserWithEmailAndPassword, user, loading, error] =
@@ -16,6 +17,7 @@ const Registration = () => {
     const [sendEmailVerification, sending] = useSendEmailVerification(
         auth
     );
+    const [token] = useToken(user || gUser);
     const {
         register,
         formState: { errors },
@@ -35,10 +37,10 @@ const Registration = () => {
     };
 
     useEffect(() => {
-        if (gUser || user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [navigate, gUser, from, user]);
+    }, [navigate, from, token]);
     if (gLoading || loading || sending) {
         return <Spinner></Spinner>;
     }

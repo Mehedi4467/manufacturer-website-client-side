@@ -9,14 +9,17 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../Hooks/useToken';
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
+
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user || gUser);
     const {
         register,
         formState: { errors },
@@ -29,10 +32,10 @@ const Login = () => {
     };
 
     useEffect(() => {
-        if (gUser || user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [navigate, gUser, from, user]);
+    }, [navigate, from, token]);
 
     if (gLoading || loading) {
         return <Spinner></Spinner>;
