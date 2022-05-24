@@ -43,9 +43,11 @@ const Purchase = () => {
         const phone = event.target.phone.value;
         const address = event.target.address.value;
         const productId = _id;
+        const productName = name;
+        const orderPrice = price;
 
         const customerOrder = {
-            orderQuentity, customerName, email, phone, address, productId
+            orderQuentity, customerName, email, phone, address, productId, productName, orderPrice
         };
 
 

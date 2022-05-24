@@ -12,7 +12,9 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Profile from "./Pages/Dashboard/Profile";
 import Review from "./Pages/Dashboard/Review";
-import Orders from "./Orders";
+import CustomerOrder from "./Pages/Dashboard/CustomerOrder";
+import Blogs from "./Pages/Blogs/Blogs";
+
 
 function App() {
   return (
@@ -22,12 +24,12 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/registration" element={<Registration></Registration>}></Route>
+        <Route path="/blog" element={<Blogs></Blogs>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<Profile></Profile>} />
           <Route path="review" element={<RequireAuth><Review></Review></RequireAuth>} />
-          <Route path="orders" element={<RequireAuth><Orders></Orders></RequireAuth>} />
-
+          <Route path="orders" element={<RequireAuth><CustomerOrder></CustomerOrder></RequireAuth>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
