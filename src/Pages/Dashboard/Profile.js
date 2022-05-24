@@ -7,6 +7,7 @@ import Spinner from '../Spinner/Spinner';
 
 const Profile = () => {
     const [user, loading] = useAuthState(auth);
+
     const { isLoading, data } = useQuery('user', () =>
         fetch(`http://localhost:5000/user/${user?.email}`, {
             method: 'GET',
@@ -19,7 +20,7 @@ const Profile = () => {
         )
     );
 
-    console.log(data);
+
 
     if (loading || isLoading) {
         return <Spinner></Spinner>

@@ -16,6 +16,10 @@ import CustomerOrder from "./Pages/Dashboard/CustomerOrder";
 import Blogs from "./Pages/Blogs/Blogs";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import UpdateProfile from "./Pages/UpdateProfile/UpdateProfile";
+import AddProduct from './Pages/Admin/AddProduct';
+import MakeAdmin from "./Pages/Admin/MakeAdmin";
+import ManageOrder from './Pages/Admin/ManageOrder';
+import ManagePrduct from './Pages/Admin/ManageProduct';
 
 
 function App() {
@@ -34,6 +38,12 @@ function App() {
           <Route path="review" element={<RequireAuth><Review></Review></RequireAuth>} />
           <Route path="orders" element={<RequireAuth><CustomerOrder></CustomerOrder></RequireAuth>} />
           <Route path="update" element={<RequireAuth><UpdateProfile></UpdateProfile></RequireAuth>} />
+
+
+          <Route path="addproduct" element={<RequireAuth><AddProduct></AddProduct> </RequireAuth>} />
+          <Route path="makeAdmin" element={<RequireAuth><MakeAdmin></MakeAdmin></RequireAuth>} />
+          <Route path="manageOrder" element={<RequireAuth><ManageOrder></ManageOrder></RequireAuth>} />
+          <Route path="manageProduct" element={<RequireAuth><ManagePrduct></ManagePrduct></RequireAuth>} />
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>

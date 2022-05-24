@@ -2,10 +2,12 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useAdmin from '../../Hooks/useAdmin';
 import Spinner from '../Spinner/Spinner';
 
 const Dashboard = () => {
     const [user, loading] = useAuthState(auth);
+    const [admin] = useAdmin(user?.email);
     if (loading) {
         return <Spinner></Spinner>
     }
@@ -20,8 +22,20 @@ const Dashboard = () => {
                             </label>
                             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><Link to='/dashboard'>Profile</Link></li>
-                                <li><Link to='orders'>Orders</Link></li>
-                                <li><Link to='review'>Review</Link></li>
+                                {
+                                    admin || <div>
+                                        <li><Link to='orders'>Orders</Link></li>
+                                        <li><Link to='review'>Review</Link></li>
+                                    </div>
+                                }
+                                {
+                                    admin && <div>
+                                        <li><Link to='manageOrder'>Manage All Orders</Link></li>
+                                        <li><Link to='addproduct'>Add A Product</Link></li>
+                                        <li><Link to='makeAdmin'>Make Admin</Link></li>
+                                        <li><Link to='manageProduct'>Manage Products</Link></li>
+                                    </div>
+                                }
 
                             </ul>
                         </div>
