@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 const OrderModal = ({ openModal, setOpenModal, orders, setData }) => {
     const handelDeleteOrder = (id) => {
-        fetch(`http://localhost:5000/order/delete/${id}`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/order/delete/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

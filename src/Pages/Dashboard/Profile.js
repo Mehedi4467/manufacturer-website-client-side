@@ -9,7 +9,7 @@ const Profile = () => {
     const [user, loading] = useAuthState(auth);
 
     const { isLoading, data } = useQuery('user', () =>
-        fetch(`http://localhost:5000/user/${user?.email}`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/user/${user?.email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -7,7 +7,7 @@ const Tools = () => {
 
 
     const { isLoading, data } = useQuery('productData', () =>
-        fetch('http://localhost:5000/product').then(res =>
+        fetch('https://lit-mountain-23720.herokuapp.com/product').then(res =>
             res.json()
         )
     )

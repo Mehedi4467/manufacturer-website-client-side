@@ -16,7 +16,7 @@ const Review = () => {
             rating, review, name, email
         }
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://lit-mountain-23720.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

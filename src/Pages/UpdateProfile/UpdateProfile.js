@@ -20,7 +20,7 @@ const UpdateProfile = () => {
             UserName, education, location, phone, linkdin
         };
 
-        fetch(`http://localhost:5000/user/update/${user?.email}`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/user/update/${user?.email}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

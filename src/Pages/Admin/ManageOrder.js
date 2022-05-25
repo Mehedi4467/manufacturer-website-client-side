@@ -7,7 +7,7 @@ import ManageOrderDeleteModal from './ManageOrderDeleteModal';
 const ManageOrder = () => {
     const [openDeleteModal, setOpenDeleteModal] = useState(null);
     const { isLoading, data, refetch } = useQuery(['order'], () =>
-        fetch(`http://localhost:5000/order`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/order`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const ManageOrder = () => {
 
 
     const handelOrderStatusChange = (id) => {
-        fetch(`http://localhost:5000/order/status/${id}`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/order/status/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

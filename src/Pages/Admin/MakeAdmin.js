@@ -10,7 +10,7 @@ const MakeAdmin = () => {
 
 
     const { isLoading, data, refetch } = useQuery(['admin'], () =>
-        fetch(`http://localhost:5000/user/allUser/${user?.email}`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/user/allUser/${user?.email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -21,7 +21,7 @@ const MakeAdmin = () => {
         )
     );
     const handelMakeAdmin = (email) => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/user/admin/${email}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json',

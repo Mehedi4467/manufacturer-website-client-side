@@ -7,7 +7,7 @@ const ManageProduct = () => {
     const [openModal, setOpenModal] = useState(null);
 
     const { isLoading, data, refetch } = useQuery(['product'], () =>
-        fetch(`http://localhost:5000/product`, {
+        fetch(`https://lit-mountain-23720.herokuapp.com/product`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

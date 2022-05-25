@@ -54,7 +54,7 @@ const Purchase = () => {
         };
 
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://lit-mountain-23720.herokuapp.com/order', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

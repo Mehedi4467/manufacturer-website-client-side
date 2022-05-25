@@ -18,7 +18,7 @@ const CheckoutForm = ({ data, refetch }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://lit-mountain-23720.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const CheckoutForm = ({ data, refetch }) => {
                 transactionId: paymentIntent.id,
 
             }
-            fetch(`http://localhost:5000/order/update/${_id}`, {
+            fetch(`https://lit-mountain-23720.herokuapp.com/order/update/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

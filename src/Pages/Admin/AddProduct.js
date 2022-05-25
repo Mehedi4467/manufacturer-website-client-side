@@ -14,7 +14,7 @@ const AddProduct = () => {
         const product = {
             name, image, description, quantity, minQuantity, price
         };
-        fetch('http://localhost:5000/product', {
+        fetch('https://lit-mountain-23720.herokuapp.com/product', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
