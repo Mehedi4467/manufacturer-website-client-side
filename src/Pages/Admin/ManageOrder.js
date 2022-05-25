@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner/Spinner';
+import ManageOrderDeleteModal from './ManageOrderDeleteModal';
 
 const ManageOrder = () => {
-
+    const [openDeleteModal, setOpenDeleteModal] = useState(null);
     const { isLoading, data, refetch } = useQuery(['order'], () =>
         fetch(`http://localhost:5000/order`, {
             method: 'GET',
@@ -22,18 +23,7 @@ const ManageOrder = () => {
         return <Spinner></Spinner>
     }
 
-    const handelDeleteOrder = (id) => {
-        fetch(`http://localhost:5000/order/delete/${id}`, {
-            method: "DELETE",
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.acknowledged) {
-                    toast("Order Deleted Successfully");
-                    refetch();
-                }
-            })
-    };
+
 
     const handelOrderStatusChange = (id) => {
         fetch(`http://localhost:5000/order/status/${id}`, {
@@ -86,8 +76,8 @@ const ManageOrder = () => {
                                     <td>{order.orderPrice}$</td>
                                     <td>{order.orderQuentity}</td>
                                     <td>{order.paid ? 'Paid' : 'Unpaid'}</td>
-                                    <td>
-                                        <p> {order?.status}</p>
+                                    <td className='flex justify-between'>
+                                        <p className='text-orange-500'> {order?.status}</p>
                                         {
                                             order.status === 'Approved' || <button onClick={() => handelOrderStatusChange(order._id)} className='btn btn-sm'>approved</button>
                                         }
@@ -97,7 +87,8 @@ const ManageOrder = () => {
                                     <td>
 
                                         {
-                                            order.paid || <button onClick={() => handelDeleteOrder(order._id)} className='btn btn-sm'>Cencel</button>
+                                            order.paid || <label onClick={() => setOpenDeleteModal(order)} for="manage-order-delete" class="btn btn-sm">Cencel</label>
+
                                         }
 
                                     </td>
@@ -111,7 +102,10 @@ const ManageOrder = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+            {
+                openDeleteModal && <ManageOrderDeleteModal setOpenDeleteModal={setOpenDeleteModal} refetch={refetch} openDeleteModal={openDeleteModal} ></ManageOrderDeleteModal>
+            }
+        </div >
     );
 };
 
