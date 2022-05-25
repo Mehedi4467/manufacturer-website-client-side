@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import Spinner from '../Spinner/Spinner';
 import OrderModal from './OrderModal';
@@ -11,18 +10,7 @@ const CustomerOrder = () => {
     const [user, loading] = useAuthState(auth);
     const [orders, setData] = useState([]);
 
-    // const { isLoading, data, refetch } = useQuery('order', () =>
-    //     fetch(`http://localhost:5000/customer-order/${user?.email}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             authorization: `Bearer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     }).then(res => {
 
-    //         return res.json();
-    //     }
-    //     )
-    // );
 
     useEffect(() => {
         if (user.email) {
@@ -34,6 +22,7 @@ const CustomerOrder = () => {
             })
                 .then(res => res.json())
                 .then(result => {
+
                     setData(result);
                 })
         }
@@ -59,7 +48,7 @@ const CustomerOrder = () => {
                             <th>Total Price</th>
                             <th>Quantity</th>
                             <th>Payment Status</th>
-                            <th>Cancel Order</th>
+                            <th>transaction Id/Cancel Order</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +59,7 @@ const CustomerOrder = () => {
                     </tbody>
                 </table>
                 {
-                    openModal && <OrderModal setOpenModal={setOpenModal} openModal={openModal} ></OrderModal>
+                    openModal && <OrderModal orders={orders} setData={setData} setOpenModal={setOpenModal} openModal={openModal} ></OrderModal>
                 }
             </div>
         </div>

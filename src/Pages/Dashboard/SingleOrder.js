@@ -18,6 +18,9 @@ const SingleOrder = ({ setOpenModal, order, index }) => {
                 {
                     (totalPrice && !order.paid) && <label htmlFor="order-delete-modal"><i onClick={() => setOpenModal(order)} className="rounded-full p-2 hover:text-white cursor-pointer hover:bg-orange-400  far fa-trash-alt"></i></label>
                 }
+                {
+                    order.transactionId && <p>{order.transactionId}</p>
+                }
             </td>
         </tr>
     );

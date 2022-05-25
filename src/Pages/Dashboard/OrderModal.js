@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const OrderModal = ({ openModal, setOpenModal }) => {
+const OrderModal = ({ openModal, setOpenModal, orders, setData }) => {
     const handelDeleteOrder = (id) => {
         fetch(`http://localhost:5000/order/delete/${id}`, {
             method: "DELETE"
@@ -10,8 +10,9 @@ const OrderModal = ({ openModal, setOpenModal }) => {
             .then(data => {
 
                 if (data.acknowledged) {
+                    const remingData = orders.filter(order => order._id !== id);
+                    setData(remingData)
                     setOpenModal(null);
-
                     toast("Order delete Successfully");
                 }
             });

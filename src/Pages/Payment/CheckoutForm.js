@@ -12,7 +12,7 @@ const CheckoutForm = ({ data, refetch }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState('');
     const [processing, setProcessing] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const { orderPrice, email, customerName, _id } = data;
     const price = parseInt(orderPrice);
 
@@ -86,6 +86,7 @@ const CheckoutForm = ({ data, refetch }) => {
             setCardError('');
             setTransactionId(paymentIntent.id);
 
+
             const payment = {
                 transactionId: paymentIntent.id,
 
@@ -97,12 +98,18 @@ const CheckoutForm = ({ data, refetch }) => {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment),
-            }).then(res => res.json()).then(data => {
-                toast(`Your Payment is Complated. Your Transaction Id is : ${transactionId}`);
-                setProcessing(false);
-                navigate('/dashboard/orders');
-                refetch();
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        setProcessing(false);
+                        toast(`Your Payment is Complated.`);
+                        navigate('/dashboard/orders');
+                        refetch();
+
+                    }
+
+                })
         }
     };
 
