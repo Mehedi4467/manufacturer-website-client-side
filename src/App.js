@@ -21,6 +21,7 @@ import MakeAdmin from "./Pages/Admin/MakeAdmin";
 import ManageOrder from './Pages/Admin/ManageOrder';
 import ManagePrduct from './Pages/Admin/ManageProduct';
 import RequireAdmin from "./Pages/RequireAdmin/RequireAdmin";
+import Payment from "./Pages/Payment/Payment";
 
 
 function App() {
@@ -34,12 +35,13 @@ function App() {
         <Route path="/blog" element={<Blogs></Blogs>}></Route>
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+
         <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<Profile></Profile>} />
           <Route path="review" element={<RequireAuth><Review></Review></RequireAuth>} />
           <Route path="orders" element={<RequireAuth><CustomerOrder></CustomerOrder></RequireAuth>} />
           <Route path="update" element={<RequireAuth><UpdateProfile></UpdateProfile></RequireAuth>} />
-
+          <Route path='payment/:orderId' element={<RequireAuth><Payment></Payment></RequireAuth>}></Route>
 
           <Route path="addproduct" element={<RequireAuth><RequireAdmin><AddProduct></AddProduct> </RequireAdmin></RequireAuth>} />
           <Route path="makeAdmin" element={<RequireAuth><RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin></RequireAuth>} />

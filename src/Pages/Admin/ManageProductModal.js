@@ -28,7 +28,7 @@ const ManageProductModal = ({ openModal, setOpenModal, refetch }) => {
                             <button onClick={() => deleteProduct(openModal._id)} className="btn bg-orange-500">Delete</button>
                         </div>
                         <div className="modal-action">
-                            <label for="product-delete-modal" className="btn">Cencel</label>
+                            <label htmlFor="product-delete-modal" className="btn">Cencel</label>
                         </div>
                     </div>
                 </div>

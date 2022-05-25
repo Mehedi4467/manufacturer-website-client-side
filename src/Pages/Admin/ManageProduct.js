@@ -44,7 +44,7 @@ const ManageProduct = () => {
                                     <td>{product.name}</td>
                                     <td>{product.quantity}</td>
                                     <td>{product.price}$</td>
-                                    <td> <label for="product-delete-modal" ><i onClick={() => setOpenModal(product)} className="hover:bg-orange-500 cursor-pointer hover:text-white rounded-full p-2 far fa-trash-alt"></i></label></td>
+                                    <td> <label htmlFor="product-delete-modal" ><i onClick={() => setOpenModal(product)} className="hover:bg-orange-500 cursor-pointer hover:text-white rounded-full p-2 far fa-trash-alt"></i></label></td>
                                 </tr>
                             )
                         }

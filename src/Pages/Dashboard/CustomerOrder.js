@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
@@ -9,28 +9,46 @@ import SingleOrder from './SingleOrder';
 const CustomerOrder = () => {
     const [openModal, setOpenModal] = useState(null);
     const [user, loading] = useAuthState(auth);
+    const [orders, setData] = useState([]);
 
-    const { isLoading, data, refetch } = useQuery(['order'], () =>
-        fetch(`http://localhost:5000/order/${user?.email}`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        }).then(res => {
+    // const { isLoading, data, refetch } = useQuery('order', () =>
+    //     fetch(`http://localhost:5000/customer-order/${user?.email}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    //         }
+    //     }).then(res => {
 
-            return res.json();
+    //         return res.json();
+    //     }
+    //     )
+    // );
+
+    useEffect(() => {
+        if (user.email) {
+            fetch(`http://localhost:5000/customer-order/${user?.email}`, {
+                method: 'GET',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(result => {
+                    setData(result);
+                })
         }
-        )
-    );
+    }, [user])
 
-    if (isLoading || loading) {
+    console.log(orders)
+
+    if (loading) {
         return <Spinner></Spinner>
     }
 
 
 
     return (
-        <div className='h-screen'>
+        <div className='h-screen container mx-auto'>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
@@ -46,13 +64,13 @@ const CustomerOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            data?.map((order, index) => <SingleOrder index={index} key={order._id} order={order} setOpenModal={setOpenModal} ></SingleOrder>)
+                            orders?.map((order, index) => <SingleOrder index={index} key={order._id} order={order} setOpenModal={setOpenModal} ></SingleOrder>)
                         }
 
                     </tbody>
                 </table>
                 {
-                    openModal && <OrderModal refetch={refetch} setOpenModal={setOpenModal} openModal={openModal} ></OrderModal>
+                    openModal && <OrderModal setOpenModal={setOpenModal} openModal={openModal} ></OrderModal>
                 }
             </div>
         </div>

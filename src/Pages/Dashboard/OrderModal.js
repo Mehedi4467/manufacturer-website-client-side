@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const OrderModal = ({ openModal, refetch, setOpenModal }) => {
+const OrderModal = ({ openModal, setOpenModal }) => {
     const handelDeleteOrder = (id) => {
         fetch(`http://localhost:5000/order/delete/${id}`, {
             method: "DELETE"
@@ -11,7 +11,7 @@ const OrderModal = ({ openModal, refetch, setOpenModal }) => {
 
                 if (data.acknowledged) {
                     setOpenModal(null);
-                    refetch();
+
                     toast("Order delete Successfully");
                 }
             });
@@ -28,7 +28,7 @@ const OrderModal = ({ openModal, refetch, setOpenModal }) => {
                             <button onClick={() => handelDeleteOrder(openModal._id)} className="btn mr-4 bg-orange-500">Yes</button>
                         </div>
                         <div className="modal-action">
-                            <label for="order-delete-modal" className="btn">Close</label>
+                            <label htmlFor="order-delete-modal" className="btn">Close</label>
                         </div>
                     </div>
                 </div>
