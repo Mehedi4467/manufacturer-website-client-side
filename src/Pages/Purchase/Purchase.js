@@ -47,7 +47,7 @@ const Purchase = () => {
         const orderPrice = price;
 
         const customerOrder = {
-            orderQuentity, customerName, email, phone, address, productId, productName, orderPrice
+            orderQuentity, customerName, email, phone, address, productId, productName, orderPrice, status: 'Pending',
         };
 
 

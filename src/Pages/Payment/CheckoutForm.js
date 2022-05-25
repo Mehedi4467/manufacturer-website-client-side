@@ -1,16 +1,18 @@
 
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner/Spinner';
 
-const CheckoutForm = ({ data }) => {
+const CheckoutForm = ({ data, refetch }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [carError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState('');
     const [processing, setProcessing] = useState(false);
+    const navigate = useNavigate()
     const { orderPrice, email, customerName, _id } = data;
     const price = parseInt(orderPrice);
 
@@ -83,9 +85,10 @@ const CheckoutForm = ({ data }) => {
 
             setCardError('');
             setTransactionId(paymentIntent.id);
-            toast(`Your Payment is Complated. Your Transaction Id is : ${transactionId}`);
+
             const payment = {
-                transactionId: paymentIntent.id
+                transactionId: paymentIntent.id,
+
             }
             fetch(`http://localhost:5000/order/update/${_id}`, {
                 method: "PATCH",
@@ -95,7 +98,10 @@ const CheckoutForm = ({ data }) => {
                 },
                 body: JSON.stringify(payment),
             }).then(res => res.json()).then(data => {
+                toast(`Your Payment is Complated. Your Transaction Id is : ${transactionId}`);
                 setProcessing(false);
+                navigate('/dashboard/orders');
+                refetch();
             })
         }
     };

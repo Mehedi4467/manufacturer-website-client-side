@@ -39,7 +39,7 @@ const CustomerOrder = () => {
         }
     }, [user])
 
-    console.log(orders)
+
 
     if (loading) {
         return <Spinner></Spinner>

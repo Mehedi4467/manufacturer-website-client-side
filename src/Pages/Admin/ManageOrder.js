@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import Spinner from '../Spinner/Spinner';
 
 const ManageOrder = () => {
@@ -16,9 +17,40 @@ const ManageOrder = () => {
         )
     );
 
-    console.log(data)
+
     if (isLoading) {
         return <Spinner></Spinner>
+    }
+
+    const handelDeleteOrder = (id) => {
+        fetch(`http://localhost:5000/order/delete/${id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.acknowledged) {
+                    toast("Order Deleted Successfully");
+                    refetch();
+                }
+            })
+    };
+
+    const handelOrderStatusChange = (id) => {
+        fetch(`http://localhost:5000/order/status/${id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            }
+
+        })
+            .then(res => res.json())
+            .then(result => {
+
+                if (result.acknowledged) {
+                    toast("Order is Approved");
+                    refetch();
+                }
+            })
     }
 
     return (
@@ -36,6 +68,7 @@ const ManageOrder = () => {
                             <th>Quantity</th>
                             <th>Payment Status</th>
                             <th>Action</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,13 +85,20 @@ const ManageOrder = () => {
                                     <td>{order.email}</td>
                                     <td>{order.orderPrice}$</td>
                                     <td>{order.orderQuentity}</td>
-                                    <td>Paid</td>
+                                    <td>{order.paid ? 'Paid' : 'Unpaid'}</td>
                                     <td>
-                                        <select className="select select-bordered w-full max-w-xs">
-                                            <option disabled selected>Who shot first?</option>
-                                            <option>Han Solo</option>
-                                            <option>Greedo</option>
-                                        </select>
+                                        <p> {order?.status}</p>
+                                        {
+                                            order.status === 'Approved' || <button onClick={() => handelOrderStatusChange(order._id)} className='btn btn-sm'>approved</button>
+                                        }
+
+                                    </td>
+
+                                    <td>
+
+                                        {
+                                            order.paid || <button onClick={() => handelDeleteOrder(order._id)} className='btn btn-sm'>Cencel</button>
+                                        }
 
                                     </td>
                                 </tr>

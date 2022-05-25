@@ -39,7 +39,7 @@ const Payment = () => {
                 <div className="card-body">
 
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm data={data} />
+                        <CheckoutForm refetch={refetch} data={data} />
                     </Elements>
                 </div>
             </div>
