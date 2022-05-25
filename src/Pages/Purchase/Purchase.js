@@ -5,14 +5,17 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useProducts from '../../Hooks/useProducts';
 import Spinner from '../Spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const Purchase = () => {
 
     const { id } = useParams();
     const [user, loading] = useAuthState(auth);
     const [products] = useProducts(id);
+    const navigate = useNavigate()
     const { name, description, image, price, minQuantity, quantity, _id } = products;
-    const [quantityLimite, setQuantityLimite] = useState('true')
+    const [quantityLimite, setQuantityLimite] = useState('true');
+
 
     if (loading) {
         return <Spinner></Spinner>
@@ -63,6 +66,7 @@ const Purchase = () => {
                 if (data.acknowledged) {
                     toast('Your order has been successfully');
                     setQuantityLimite(true);
+                    navigate('/dashboard/orders');
                 }
             })
 
