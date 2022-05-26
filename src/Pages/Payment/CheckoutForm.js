@@ -3,15 +3,15 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Spinner from '../Spinner/Spinner';
+// import Spinner from '../Spinner/Spinner';
 
 const CheckoutForm = ({ data, refetch }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [carError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-    const [transactionId, setTransactionId] = useState('');
-    const [processing, setProcessing] = useState(false);
+    // const [transactionId, setTransactionId] = useState('');
+    // const [processing, setProcessing] = useState(false);
     const navigate = useNavigate();
     const { orderPrice, email, customerName, _id } = data;
     const price = parseInt(orderPrice);
@@ -58,7 +58,7 @@ const CheckoutForm = ({ data, refetch }) => {
             setCardError(error.message);
         } else {
             setCardError('');
-            setProcessing(true);
+            // setProcessing(true);
         }
 
 
@@ -79,12 +79,12 @@ const CheckoutForm = ({ data, refetch }) => {
 
         if (intentError) {
             setCardError(intentError?.message);
-            setProcessing(false);
+            // setProcessing(false);
         }
         else {
 
             setCardError('');
-            setTransactionId(paymentIntent.id);
+            // setTransactionId(paymentIntent.id);
 
 
             const payment = {
@@ -102,7 +102,7 @@ const CheckoutForm = ({ data, refetch }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.acknowledged) {
-                        setProcessing(false);
+                        // setProcessing(false);
                         toast(`Your Payment is Complated.`);
                         navigate('/dashboard/orders');
                         refetch();
@@ -114,9 +114,9 @@ const CheckoutForm = ({ data, refetch }) => {
     };
 
 
-    if (processing) {
-        return <Spinner></Spinner>
-    }
+    // if (processing) {
+    //     return <Spinner></Spinner>
+    // }
     return (
         <>
             <form onSubmit={handleSubmit}>
